@@ -1,5 +1,23 @@
 .navbar {
-  p {
-    color: cyan;
+  display: flex;
+  align-items: center;
+  background-color: cyan;
+
+  .navbar-brand {
+  }
+
+  .navbar-items {
+    .navbar-link {
+      list-style: none;
+
+      li {
+        display: inline-block;
+        padding: 0 20px;
+        
+        a {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
