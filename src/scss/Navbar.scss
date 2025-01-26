@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   background-color: cyan;
-
+  padding: 2em 5em 2em 5em;
+  position: relative;
+  
   .navbar-brand {
   }
 
@@ -13,7 +15,7 @@
       li {
         display: inline-block;
         padding: 0 20px;
-        
+
         a {
           text-decoration: none;
         }
