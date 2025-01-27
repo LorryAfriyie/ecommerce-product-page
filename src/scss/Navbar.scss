@@ -1,16 +1,38 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: cyan;
   padding: 2em 5em 2em 5em;
   position: relative;
-  
+
+  @media (max-width: 40em) {
+    padding: 1em 1em 1em 1.25em;
+  }
+
   .navbar-brand {
   }
 
   .navbar-items {
+    display: flex;
+    align-items: center;
+
+    .menu-icon {
+      display: none;
+
+      @media (max-width: 40em) {
+        display: block;
+      }
+    }
+
     .navbar-link {
       list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @media (max-width: 40em) {
+        display: none;
+      }
 
       li {
         display: inline-block;
@@ -18,8 +40,15 @@
 
         a {
           text-decoration: none;
+          display: block;
         }
       }
     }
+  }
+
+  .navbar-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
