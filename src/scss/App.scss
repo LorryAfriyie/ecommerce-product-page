@@ -8,3 +8,13 @@
     }
   }
 }
+
+// Hamburger menu icon
+.menu-icon {
+  display: none;
+
+  @media (max-width: 40em) {
+    display: block;
+    z-index: 2;
+  }
+}
