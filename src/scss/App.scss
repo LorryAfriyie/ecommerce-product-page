@@ -12,6 +12,7 @@
 // Hamburger menu icon
 .menu-icon {
   display: none;
+  cursor: pointer;
 
   @media (max-width: 40em) {
     display: block;

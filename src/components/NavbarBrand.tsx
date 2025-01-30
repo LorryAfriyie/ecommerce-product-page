@@ -1,16 +1,6 @@
-import { useRef, useEffect } from "react";
+import { forwardRef } from "react";
 
-interface NavbarBrandType {
-  menu: () => void;
-}
-
-export function NavbarBrand({ menu }: NavbarBrandType) {
-  const btnOpenMenu = useRef<SVGSVGElement | null>(null);
-
-  useEffect(() => {
-    btnOpenMenu.current?.addEventListener("click", menu);
-  }, [menu]);
-
+export const NavbarBrand = forwardRef<SVGSVGElement>((props, ref) => {
   return (
     <>
       <svg
@@ -18,7 +8,7 @@ export function NavbarBrand({ menu }: NavbarBrandType) {
         height="15"
         xmlns="http://www.w3.org/2000/svg"
         className="menu-icon"
-        ref={btnOpenMenu}
+        ref={ref}
       >
         <path
           d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z"
@@ -32,4 +22,4 @@ export function NavbarBrand({ menu }: NavbarBrandType) {
       </div>
     </>
   );
-}
+});
