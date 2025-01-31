@@ -8,6 +8,7 @@ export const NavbarBrand = forwardRef<SVGSVGElement>((props, ref) => {
         height="15"
         xmlns="http://www.w3.org/2000/svg"
         className="menu-icon"
+        aria-controls="false"
         ref={ref}
       >
         <path

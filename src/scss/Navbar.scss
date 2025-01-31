@@ -47,7 +47,9 @@
     padding: 0;
 
     @media (max-width: 40em) {
-      display: none;
+      display: grid;
+      gap: 1rem;
+      padding-block-start: 5rem;
     }
 
     li {
