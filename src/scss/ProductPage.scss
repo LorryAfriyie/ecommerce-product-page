@@ -1,0 +1,16 @@
+.product-page {
+  &__grid {
+    display: grid;
+    place-content: center;
+
+    @media (min-width: 40em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__img-col,
+  &__info-col {
+    display: grid;
+    place-content: center;
+  }
+}
