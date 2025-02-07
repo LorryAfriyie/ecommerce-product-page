@@ -13,4 +13,39 @@
     display: grid;
     place-content: center;
   }
+
+  &__company-name {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: 700;
+    margin-block-end: 1.5rem;
+  }
+
+  &__product-heading {
+    font-size: 3.25rem;
+    line-height: 1;
+    margin-block-end: 3rem;
+  }
+
+  &__product-description {
+    line-height: 2;
+  }
+
+  &__discount-price {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .discount {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-block-start: 1.5rem;
+    margin-block-end: 1.5rem;
+  }
+
+  &__original-price {
+    text-decoration: line-through;
+    font-weight: 700;
+  }
 }

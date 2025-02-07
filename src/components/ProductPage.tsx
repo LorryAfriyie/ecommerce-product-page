@@ -17,9 +17,11 @@ export function ProductPage() {
           </p>
 
           <div className="proudct-page__price-block">
-            <p className="product-page__discount-price">$125.00</p>
+            <div className="discount">
+              <p className="product-page__discount-price">$125.00</p>
 
-            <p className="proudct-page__discount-percentage">50% </p>
+              <p className="proudct-page__discount-percentage">50% </p>
+            </div>
 
             <p className="product-page__original-price">$250.00</p>
           </div>
