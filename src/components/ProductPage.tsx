@@ -1,11 +1,15 @@
+import img1 from "/images/image-product-1.jpg";
+
 export function ProductPage() {
   return (
     <div className="product-page">
       <div className="product-page__grid">
-        <div className="product-page__img-col">Images</div>
+        <div className="product-page__img-col">
+          <img src={img1} alt={img1} />
+        </div>
 
         <div className="product-page__info-col">
-          <p className="product-page__company-name">Sneaker Company</p>
+          <small className="product-page__company-name">Sneaker Company</small>
           <h1 className="product-page__product-heading">
             Fall Limited Edition Sneakers
           </h1>
@@ -18,9 +22,9 @@ export function ProductPage() {
 
           <div className="proudct-page__price-block">
             <div className="discount">
-              <p className="product-page__discount-price">$125.00</p>
+              <p className="discount__discount-price">$125.00</p>
 
-              <p className="proudct-page__discount-percentage">50% </p>
+              <p className="discount__discount-percentage">50%</p>
             </div>
 
             <p className="product-page__original-price">$250.00</p>

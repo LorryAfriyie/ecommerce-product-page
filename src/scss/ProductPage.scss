@@ -14,6 +14,23 @@
     place-content: center;
   }
 
+  &__img-col {
+    display: grid;
+    place-content: center;
+
+    img {
+      width: 400px;
+      height: 400px;
+      border-radius: 15px;
+
+      @media (max-width: 60em) {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+      }
+    }
+  }
+
   &__company-name {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
@@ -31,17 +48,24 @@
     line-height: 2;
   }
 
-  &__discount-price {
-    font-size: 2rem;
-    font-weight: 700;
-  }
-
   .discount {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-block-start: 1.5rem;
     margin-block-end: 1.5rem;
+
+    &__discount-price {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    &__discount-percentage {
+      background-color: black;
+      color: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    }
   }
 
   &__original-price {
