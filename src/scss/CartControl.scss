@@ -1,2 +1,11 @@
 .cart-control {
+  display: grid;
+  padding: 1rem;
+
+  gap: 1rem;
+
+
+  @media (min-width: 60em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
