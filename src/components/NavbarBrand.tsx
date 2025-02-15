@@ -19,7 +19,7 @@ export const NavbarBrand = forwardRef<SVGSVGElement>((props, ref) => {
       </svg>
 
       <div className="navbar__brand">
-        <h2>sneakers</h2>
+        <h1>sneakers</h1>
       </div>
     </>
   );

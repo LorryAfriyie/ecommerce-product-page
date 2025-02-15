@@ -1,4 +1,5 @@
 .product-page {
+
   &__grid {
     display: grid;
     place-content: center;
@@ -31,21 +32,28 @@
     }
   }
 
+  &__info-col {
+
+  }
+
   &__company-name {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     font-weight: 700;
     margin-block-end: 1.5rem;
+    color: var(--clr-dark-grayish-blue);
   }
 
   &__product-heading {
     font-size: 3.25rem;
     line-height: 1;
     margin-block-end: 3rem;
+    color: var(--clr-very-dark-blue);
   }
 
   &__product-description {
     line-height: 2;
+    color: var(--clr-dark-grayish-blue);
   }
 
   .discount {
@@ -58,18 +66,21 @@
     &__discount-price {
       font-size: 2rem;
       font-weight: 700;
+      color: var(--clr-very-dark-blue);
     }
 
     &__discount-percentage {
-      background-color: black;
-      color: white;
+      background-color: var(--clr-very-dark-blue);
+      color: var(--clr-light-grayish-blue);
       border-radius: 5px;
       padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+      font-weight: 700;
     }
   }
 
   &__original-price {
     text-decoration: line-through;
     font-weight: 700;
+    color: var(--clr-dark-grayish-blue);
   }
 }
