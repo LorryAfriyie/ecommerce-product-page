@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-export const NavbarBrand = forwardRef<SVGSVGElement>((props, ref) => {
+export const NavbarBrand = forwardRef<SVGSVGElement>((_props, ref) => {
   return (
     <>
       <svg
