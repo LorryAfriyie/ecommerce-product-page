@@ -1,7 +1,10 @@
 .cart-control {
-  display: flex;
-  flex-direction: row;
+/*  display: flex;
+  flex-direction: row;*/
+  display: grid;
+  place-content: center;
   gap: 1rem;
+  grid-template-columns: 30% 1fr;
 
   .add-to-cart, .quantity {
     font-weight: 700;
@@ -9,8 +12,13 @@
 
   .add-to-cart {
     background-color: var(--clr-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     svg {
+      position: relative;
+      right: 1rem;
       path {
         fill: black;
       }
@@ -19,13 +27,17 @@
 
   .quantity {
     background-color: var(--clr-palge-orange);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 1.5rem;
   }
 
   .add-to-cart:hover {
     background-color: var(--clr-palge-orange)
   }
 
-  @media (min-width: 60em) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 60em) {
+   grid-template-columns: repeat(2, 1fr);
   }
 }

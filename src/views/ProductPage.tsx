@@ -30,7 +30,7 @@ export function ProductPage() {
 
             <p className="product-page__original-price">$250.00</p>
           </div>
-          
+
           <CartControl />
         </div>
       </div>
