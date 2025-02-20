@@ -1,7 +1,10 @@
 .navbar {
-  display: flex;
-  align-items: center;
   padding: 30px 5%;
+  &__border {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--clr-grayish-blue);
+  }
 
   @media (max-width: 40em) {
     padding: 1em 1em 1em 1.25em;
