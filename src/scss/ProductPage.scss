@@ -1,4 +1,9 @@
 .product-page {
+  width: 1100px;
+
+  @media (max-width: 60em) {
+    width: auto;
+  }
 
   &__grid {
     display: grid;
@@ -16,12 +21,9 @@
   }
 
   &__img-col {
-    display: grid;
-    place-content: center;
-
     img {
-      width: 400px;
-      height: 400px;
+      width: 500px;
+      height: 500px;
       border-radius: 15px;
 
       @media (max-width: 60em) {
@@ -33,7 +35,9 @@
   }
 
   &__info-col {
-
+    .container {
+      padding: 2rem;
+    }
   }
 
   &__company-name {
