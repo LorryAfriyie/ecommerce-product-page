@@ -31,7 +31,7 @@ export function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar__border">
+      <div className="navbar__content">
         <NavbarBrand ref={btnOpenMenu} />
 
         <div className="navbar__menu" ref={menu} data-visible={false}>
