@@ -14,6 +14,7 @@ export function ProductPage() {
             <small className="product-page__company-name">
               Sneaker Company
             </small>
+
             <h1 className="product-page__product-heading">
               Fall Limited Edition Sneakers
             </h1>

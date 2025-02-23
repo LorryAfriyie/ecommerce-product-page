@@ -8,6 +8,7 @@
   &__grid {
     display: grid;
     place-content: center;
+    gap: 3rem;
 
     @media (min-width: 40em) {
       grid-template-columns: repeat(2, 1fr);
@@ -22,8 +23,9 @@
 
   &__img-col {
     img {
-      width: 500px;
-      height: 500px;
+      max-width: 100%;
+      height: auto;
+
       border-radius: 15px;
 
       @media (max-width: 60em) {
@@ -36,7 +38,7 @@
 
   &__info-col {
     .container {
-      padding: 2rem;
+      padding: 1.75rem;
     }
   }
 
@@ -44,19 +46,20 @@
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     font-weight: 700;
-    margin-block-end: 1.5rem;
+    margin-block-end: 2.5rem;
     color: var(--clr-dark-grayish-blue);
   }
 
   &__product-heading {
     font-size: 3.25rem;
     line-height: 1;
+    margin-block-start: 1.5rem;
     margin-block-end: 3rem;
     color: var(--clr-very-dark-blue);
   }
 
   &__product-description {
-    line-height: 2;
+    line-height: 1.5;
     color: var(--clr-dark-grayish-blue);
   }
 
@@ -65,7 +68,7 @@
     align-items: center;
     gap: 1rem;
     margin-block-start: 1.5rem;
-    margin-block-end: 1.5rem;
+    margin-block-end: 1rem;
 
     &__discount-price {
       font-size: 2rem;
@@ -86,5 +89,6 @@
     text-decoration: line-through;
     font-weight: 700;
     color: var(--clr-dark-grayish-blue);
+    margin-block-end: 2rem;
   }
 }

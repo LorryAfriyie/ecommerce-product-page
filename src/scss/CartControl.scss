@@ -4,10 +4,11 @@
   display: grid;
   place-content: center;
   gap: 1rem;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 35% 1fr;
 
   .add-to-cart, .quantity {
     font-weight: 700;
+    padding: 1rem;
   }
 
   .add-to-cart {
