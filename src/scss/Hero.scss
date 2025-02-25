@@ -5,4 +5,8 @@
   align-items: center;
   justify-content: space-between;
   padding-block-start: 5rem;
+
+  @media (max-width: 60em) {
+    padding-block-start: 0;
+  }
 }

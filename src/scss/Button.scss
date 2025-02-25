@@ -6,3 +6,18 @@ button {
   box-shadow: none;
   border: none;
 }
+
+.quantity-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--clr-light-grayish-blue);
+
+  button {
+    background:none;
+    display: grid;
+    place-items: center;
+  }
+}
