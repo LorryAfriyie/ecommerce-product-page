@@ -10,9 +10,10 @@ type ButtonType = {
 type QuantityType = {
   icon?: ReactNode;
   icon2?: ReactNode;
-  text?: string;
+  text?: number;
   btnClass?: string;
   btnFunction?: () => void;
+  btnFunction2?: () => void;
 };
 
 export function Button({ text, btnClass, icon, btnFunction }: ButtonType) {
@@ -30,10 +31,11 @@ export function QuantityBtn({
   text,
   btnClass,
   btnFunction,
+  btnFunction2,
 }: QuantityType) {
   const btnAttributes = [
     { id: 1, _icon: icon, _btnFunction: btnFunction },
-    { id: 2, _icon: icon2, _btnFunction: btnFunction },
+    { id: 2, _icon: icon2, _btnFunction: btnFunction2 },
   ];
 
   return (
