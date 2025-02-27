@@ -19,14 +19,20 @@ export function useCart() {
 export function CartProvider({ children }: CartContextType) {
   const [cartQuantity, setCartQuantity] = useState<number | null>(0);
 
+  // Increasing item quantity
   function increaseQuantity() {
     if (typeof cartQuantity === "number")
-      setCartQuantity((cartQuantity) => cartQuantity + 1);
+      setCartQuantity((cartQuantity) =>
+        cartQuantity != null ? cartQuantity + 1 : null
+      );
   }
 
+  // Decreasing item quantity
   function decreaseQuantity() {
     if (typeof cartQuantity === "number")
-      setCartQuantity((cartQuantity) => cartQuantity - 1);
+      setCartQuantity((cartQuantity) =>
+        cartQuantity != null ? (cartQuantity > 1 ? cartQuantity - 1 : 0) : null
+      );
   }
   return (
     <CartContext.Provider
