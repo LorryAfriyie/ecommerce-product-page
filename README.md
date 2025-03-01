@@ -45,7 +45,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Project Solution URL](https://github.com/LorryAfriyie/ecommerce-product-page)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -73,9 +73,23 @@ To see how you can add code snippets, see below:
 <h1>Some HTML code I'm proud of</h1>
 ```
 
+
+Using pseudo selector to be able to create unique navbar link hover styles
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+ a::before {
+  content: '';
+  height: 4px;
+  width: 100%;
+  background-color: var(--clr-orange);
+  position: absolute;
+  opacity: 0;
+  inset: 56px 0 0 0;
+  transition: all .2s;
+  pointer-events: none;
+}
+
+a:hover::before {
+  opacity: 1;
 }
 ```
 
