@@ -6,7 +6,7 @@ import { NavbarBrand } from "./NavbarBrand";
 export function Navbar() {
   const menu = useRef<HTMLDivElement | null>(null),
     body = document.querySelector("body"),
-    btnOpenMenu = useRef<SVGSVGElement | null>(null);
+    btnOpenMenu = useRef<HTMLButtonElement | null>(null);
 
   function OpenMenu() {
     const visibility = menu.current!.getAttribute("data-visible");
@@ -14,10 +14,12 @@ export function Navbar() {
     switch (visibility) {
       case "false":
         menu.current?.setAttribute("data-visible", true);
+        btnOpenMenu.current?.setAttribute("aria-expanded", "true");
         body!.classList.add("overlay");
         break;
       case "true":
         menu.current?.setAttribute("data-visible", false);
+        btnOpenMenu.current?.setAttribute("aria-expanded", "false");
         body!.classList.remove("overlay");
         break;
       default:
@@ -34,7 +36,12 @@ export function Navbar() {
       <div className="navbar__content">
         <NavbarBrand ref={btnOpenMenu} />
 
-        <div className="navbar__menu" ref={menu} data-visible={false}>
+        <div
+          className="navbar__menu"
+          id={"menu"}
+          ref={menu}
+          data-visible={false}
+        >
           <div className="navbar__items">
             <NavbarLinks />
           </div>

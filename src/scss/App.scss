@@ -13,10 +13,17 @@
 .menu-icon {
   display: none;
   cursor: pointer;
+  background-image: url("/images/icon-menu.svg") no-repeat;
+  background-color: transparent;
+  border-radius: 0;
 
   @media (max-width: 40em) {
     display: block;
     margin-inline-end: 1rem;
     z-index: 3;
   }
+}
+
+.menu-icon [aria-expanded="true"] {
+  background: url("/images/icon-close.svg") no-repeat;
 }

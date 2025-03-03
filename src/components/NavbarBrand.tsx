@@ -1,22 +1,14 @@
 import { forwardRef } from "react";
 
-export const NavbarBrand = forwardRef<SVGSVGElement>((_props, ref) => {
+export const NavbarBrand = forwardRef<HTMLButtonElement>((_props, ref) => {
   return (
     <>
-      <svg
-        width="16"
-        height="15"
-        xmlns="http://www.w3.org/2000/svg"
-        className="menu-icon"
-        aria-controls="false"
+      <button
+        className={"menu-icon"}
+        aria-expanded={"false"}
+        aria-controls={"menu"}
         ref={ref}
-      >
-        <path
-          d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z"
-          fill="#69707D"
-          fillRule="evenodd"
-        />
-      </svg>
+      ></button>
 
       <div className="navbar__brand">
         <h1>sneakers</h1>
