@@ -13,8 +13,8 @@
 .menu-icon {
   display: none;
   cursor: pointer;
-  background-image: url("/images/icon-menu.svg") no-repeat;
-  background-color: transparent;
+  background: url("/images/icon-menu.svg") no-repeat;
+
   border-radius: 0;
 
   @media (max-width: 40em) {
@@ -24,6 +24,6 @@
   }
 }
 
-.menu-icon [aria-expanded="true"] {
+.menu-icon[aria-expanded="true"] {
   background: url("/images/icon-close.svg") no-repeat;
 }
