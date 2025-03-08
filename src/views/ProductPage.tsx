@@ -25,7 +25,7 @@ export function ProductPage() {
               everything the weather can offer.
             </p>
 
-            <div className="proudct-page__price-block">
+            <div className="product-page__price-block">
               <div className="discount">
                 <p className="discount__discount-price">$125.00</p>
 
