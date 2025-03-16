@@ -1,21 +1,34 @@
 export function NavbarLinks() {
+  //   Navbar Items
+  const navItems = [
+    { href: "#", label: "Collection" },
+    {
+      href: "#",
+      label: "Men",
+    },
+    {
+      href: "#",
+      label: "Women",
+    },
+    {
+      href: "#",
+      label: "About",
+    },
+    {
+      href: "#",
+      label: "Contact",
+    },
+  ];
+
   return (
-    <ul className="navbar__links">
-      <li>
-        <a href="">Collection</a>
-      </li>
-      <li>
-        <a href="">Men</a>
-      </li>
-      <li>
-        <a href="">Women</a>
-      </li>
-      <li>
-        <a href="">About</a>
-      </li>
-      <li>
-        <a href="">Contact</a>
-      </li>
-    </ul>
+    <div className="navbar-links">
+      <ul>
+        {navItems.map((item, index) => (
+          <li key={index}>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
