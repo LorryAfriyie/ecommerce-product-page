@@ -1,7 +1,7 @@
 export function NavbarLinks() {
   //   Navbar Items
   const navItems = [
-    { href: "#", label: "Collection" },
+    { href: "#", label: "Collections" },
     {
       href: "#",
       label: "Men",

@@ -31,8 +31,13 @@
 
           a {
             text-decoration: none;
+            color: var(	--clr-dark-grayish-blue);
             padding: 1rem;
             display: block;
+          }
+
+          a:hover {
+            color: var(--clr-very-dark-blue);
           }
         }
       }
@@ -45,5 +50,12 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+
+    .profile-icon {
+      img {
+        width: 60px;
+        vertical-align: middle;
+      }
+    }
   }
 }
