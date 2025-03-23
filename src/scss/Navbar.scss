@@ -2,15 +2,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 30px 7rem;
+
+  @media (max-width: 60em) {
+    padding: 0;
+   // padding-inline: .75rem;
+    margin: 1rem;
+  }
 
   &__container {
     display: flex;
     justify-content: space-between;
     //  NAVIGATION BAR BRAND
     .navbar-brand {
+      margin-inline-end: 3rem;
+
+      @media (max-width: 60em) {
+        margin-inline-end: 0;
+      }
+
       .brand-title {
-        font-size: 1.5rem;
-        margin: .5rem;
+        font-size: 2rem;
+        font-weight: 700;
       }
     }
 
@@ -51,9 +64,14 @@
     justify-content: center;
     gap: 1rem;
 
+    .cart {
+      display: grid;
+      place-content: center;
+    }
+
     .profile-icon {
       img {
-        width: 60px;
+        width: 40px;
         vertical-align: middle;
       }
     }
