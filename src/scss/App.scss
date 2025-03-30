@@ -27,3 +27,17 @@
 .menu-icon[aria-expanded="true"] {
   background: url("/images/icon-close.svg") no-repeat;
 }
+
+.border-container {
+  display: grid;
+  place-items: center;
+
+  @media (max-width: 60em) {
+    display: none;
+  }
+
+  .border {
+    border-bottom: 1px solid var(--clr-grayish-blue);
+    width: calc(100% - 14rem);
+  }
+}

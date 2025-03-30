@@ -4,8 +4,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-block-start: 4rem;
 
   @media (max-width: 60em) {
     padding-block-start: 0;
+    margin-block-start: 0;
   }
 }
