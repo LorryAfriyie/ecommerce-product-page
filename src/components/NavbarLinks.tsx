@@ -1,3 +1,6 @@
+import { MobileMenuBtn } from "./MobileMenuBtn.tsx";
+import { CloseIcon } from "./SVG.tsx";
+
 export function NavbarLinks() {
   //   Navbar Items
   const navItems = [
@@ -20,11 +23,14 @@ export function NavbarLinks() {
     },
   ];
 
+  const CloseMenu = () => alert("Close");
+
   return (
     <div className="navbar-links">
-      <ul>
+      <MobileMenuBtn image={<CloseIcon />} _function={CloseMenu} />
+      <ul className={"nav-link-items"}>
         {navItems.map((item, index) => (
-          <li key={index}>
+          <li key={index} className={"nav-item"}>
             <a href={item.href}>{item.label}</a>
           </li>
         ))}

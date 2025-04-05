@@ -11,7 +11,14 @@
 
 // Hamburger menu icon
 .menu-icon {
-  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+
+  @media (min-width: 35em) {
+    display: none;
+  }
+/*  display: none;
   cursor: pointer;
   background: url("/images/icon-menu.svg") no-repeat;
   margin-inline-start: auto;
@@ -21,12 +28,12 @@
     display: block;
     margin-inline-end: 1rem;
     z-index: 3;
-  }
+  }*/
 }
 
-.menu-icon[aria-expanded="true"] {
+/*.menu-icon[aria-expanded="true"] {
   background: url("/images/icon-close.svg") no-repeat;
-}
+}*/
 
 .border-container {
   display: grid;
