@@ -51,6 +51,11 @@
         @media (max-width: 35em) {
           flex-direction: column;
           padding: min(10vh, 10rem) 1em;
+          transform: translateX(-100%);
+        }
+
+        &[data-visible="true"] {
+          transform: translateX(0%);
         }
 
         .nav-item {

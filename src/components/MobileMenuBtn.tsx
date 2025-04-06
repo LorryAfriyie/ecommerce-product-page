@@ -1,14 +1,17 @@
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 
 type MobileMenuBtn = {
-  image: ReactNode;
+  image?: ReactNode;
   _function?: () => void;
+  _aria: string;
 };
 
-export const MobileMenuBtn = ({ image, _function }: MobileMenuBtn) => {
-  return (
-    <button className={"menu-icon"} onClick={_function}>
-      {image}
-    </button>
-  );
-};
+export const MobileMenuBtn = forwardRef<HTMLButtonElement, MobileMenuBtn>(
+  (props, ref) => {
+    return (
+      <button className={"menu-icon"} onClick={props._function} ref={ref}>
+        {props.image}
+      </button>
+    );
+  }
+);

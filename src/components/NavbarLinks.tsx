@@ -1,7 +1,8 @@
 import { MobileMenuBtn } from "./MobileMenuBtn.tsx";
 import { CloseIcon } from "./SVG.tsx";
+import { forwardRef } from "react";
 
-export function NavbarLinks() {
+export const NavbarLinks = forwardRef<HTMLUListElement>((props, ref) => {
   //   Navbar Items
   const navItems = [
     { href: "#", label: "Collections" },
@@ -23,12 +24,21 @@ export function NavbarLinks() {
     },
   ];
 
-  const CloseMenu = () => alert("Close");
+  const CloseMenu = () => {};
 
   return (
     <div className="navbar-links">
-      <MobileMenuBtn image={<CloseIcon />} _function={CloseMenu} />
-      <ul className={"nav-link-items"}>
+      <MobileMenuBtn
+        image={<CloseIcon />}
+        _function={CloseMenu}
+        _aria={"nav-link-items"}
+      />
+      <ul
+        className={"nav-link-items"}
+        id={"nav-link-items"}
+        data-visible={"false"}
+        ref={ref}
+      >
         {navItems.map((item, index) => (
           <li key={index} className={"nav-item"}>
             <a href={item.href}>{item.label}</a>
@@ -37,4 +47,4 @@ export function NavbarLinks() {
       </ul>
     </div>
   );
-}
+});
