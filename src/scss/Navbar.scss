@@ -32,7 +32,7 @@
     .navbar-links {
       // Hide the links when window reaches tablet screen size
       @media (max-width: 60em) {
-        display: none;
+        //display: none;
       }
 
       @media (max-width: 35em) {
@@ -40,7 +40,6 @@
         position: fixed;
         inset: 0 30% 0 0;
         background: var(--clr-white);
-
       }
 
       .nav-link-items {
@@ -51,12 +50,8 @@
         @media (max-width: 35em) {
           flex-direction: column;
           padding: min(10vh, 10rem) 1em;
-          transform: translateX(-100%);
         }
 
-        &[data-visible="true"] {
-          transform: translateX(0%);
-        }
 
         .nav-item {
           list-style: none;

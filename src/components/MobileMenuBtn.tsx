@@ -3,7 +3,7 @@ import { ReactNode, forwardRef } from "react";
 type MobileMenuBtn = {
   image?: ReactNode;
   _function?: () => void;
-  _aria: string;
+  _aria?: string;
 };
 
 export const MobileMenuBtn = forwardRef<HTMLButtonElement, MobileMenuBtn>(
