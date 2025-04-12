@@ -10,7 +10,7 @@ type ButtonType = {
 type QuantityType = {
   icon?: ReactNode;
   icon2?: ReactNode;
-  text?: number;
+  text?: number | null;
   btnClass?: string;
   btnFunction?: () => void;
   btnFunction2?: () => void;

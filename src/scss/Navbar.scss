@@ -17,14 +17,12 @@
     //  NAVIGATION BAR BRAND
     .navbar-brand {
       margin-inline-end: 3rem;
+      margin-inline-start: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
 
       @media (max-width: 60em) {
         margin-inline-end: 0;
-      }
-
-      .brand-title {
-        font-size: 2rem;
-        font-weight: 700;
       }
     }
 
@@ -40,6 +38,7 @@
         position: fixed;
         inset: 0 30% 0 0;
         background: var(--clr-white);
+        //transform: translateX(-100%);
       }
 
       .nav-link-items {
@@ -51,7 +50,6 @@
           flex-direction: column;
           padding: min(10vh, 10rem) 1em;
         }
-
 
         .nav-item {
           list-style: none;
@@ -67,6 +65,9 @@
             color: var(--clr-very-dark-blue);
           }
         }
+      }
+
+      .nav-link-items[data-visible="true"] {
       }
     }
   }
