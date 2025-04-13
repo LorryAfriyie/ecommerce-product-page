@@ -7,9 +7,6 @@ function App() {
     <div className="app">
       <CartProvider>
         <Navbar />
-        <div className="border-container">
-          <div className="border"></div>
-        </div>
         <Hero />
 
         <div className="attribution">
