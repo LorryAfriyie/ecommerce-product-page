@@ -1,12 +1,38 @@
+import { useState } from "react";
 import { CartControl } from "./CartControl";
+
+// Product image imports
 import img1 from "/images/image-product-1.jpg";
+import img2 from "/images/image-product-2.jpg";
+import img3 from "/images/image-product-3.jpg";
+import img4 from "/images/image-product-4.jpg";
+
+// Product thumbnail imports
+import thumbnail1 from "/images/image-product-1-thumbnail.jpg";
+import thumbnail2 from "/images/image-product-2-thumbnail.jpg";
+import thumbnail3 from "/images/image-product-3-thumbnail.jpg";
+import thumbnail4 from "/images/image-product-4-thumbnail.jpg";
+
+const products = [img1, img2, img3, img4];
+
+const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
 
 export function ProductPage() {
+  const [index, setIndex] = useState(0);
+
   return (
     <div className="product-page">
       <div className="product-page__grid">
         <div className="product-page__img-col">
-          <img src={img1} alt={img1} />
+          <img src={img1} alt={img1} className={"product-img"} />
+
+          <div className={"img-thumbnails"}>
+            {thumbnails.map((img, index) => (
+              <button key={img} className={"thumbnails-btn"}>
+                <img src={img} alt={img} />
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="product-page__info-col">

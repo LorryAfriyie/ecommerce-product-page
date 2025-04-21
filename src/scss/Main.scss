@@ -53,3 +53,8 @@ body {
   display: flex;
   gap: var(--gap, 2rem);
 }
+
+img {
+  max-width: 100%;
+  display: block;
+}
