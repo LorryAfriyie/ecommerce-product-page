@@ -1,0 +1,23 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+  
+body {
+  margin: 0;
+  height: 100vh;
+  font-size: var(--font);
+  overflow-x: hidden;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 2rem);
+}

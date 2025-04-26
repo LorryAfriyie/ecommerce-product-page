@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartControl } from "./CartControl";
 
 // Product image imports
@@ -20,15 +20,24 @@ const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
 export function ProductPage() {
   const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    console.log(index);
+  }, [index]);
+
   return (
     <div className="product-page">
       <div className="product-page__grid">
         <div className="product-page__img-col">
           <img src={img1} alt={img1} className={"product-img"} />
 
+          {/*Product Image Thumbnails*/}
           <div className={"img-thumbnails"}>
             {thumbnails.map((img, index) => (
-              <button key={img} className={"thumbnails-btn"}>
+              <button
+                key={img}
+                className={"thumbnails-btn"}
+                onClick={() => setIndex(index)}
+              >
                 <img src={img} alt={img} />
               </button>
             ))}
