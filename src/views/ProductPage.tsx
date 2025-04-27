@@ -18,7 +18,7 @@ const products = [img1, img2, img3, img4];
 const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
 
 export function ProductPage() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
     console.log(index);
@@ -28,15 +28,23 @@ export function ProductPage() {
     <div className="product-page">
       <div className="product-page__grid">
         <div className="product-page__img-col">
-          <img src={img1} alt={img1} className={"product-img"} />
+          <img
+            src={products[index]}
+            alt={products[index]}
+            className={"product-img"}
+          />
 
           {/*Product Image Thumbnails*/}
           <div className={"img-thumbnails"}>
-            {thumbnails.map((img, index) => (
+            {thumbnails.map((img, i) => (
               <button
                 key={img}
-                className={"thumbnails-btn"}
-                onClick={() => setIndex(index)}
+                className={
+                  i === index
+                    ? "active-thumbnail thumbnails-btn"
+                    : "thumbnails-btn"
+                }
+                onClick={() => setIndex(i)}
               >
                 <img src={img} alt={img} />
               </button>

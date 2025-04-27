@@ -44,6 +44,15 @@
         all: unset;
       }
 
+      .active-thumbnail {
+        border: 2px solid var(--clr-orange);
+        border-radius: 20px;
+
+        img {
+          opacity: 0.3;
+        }
+      }
+
       .thumbnails-btn:hover {
         cursor: pointer;
       }
@@ -54,6 +63,10 @@
 
       img {
         border-radius: 15px;
+      }
+
+      img:hover {
+        opacity: 0.5;
       }
     }
   }
