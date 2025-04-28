@@ -1,0 +1,14 @@
+.img-slider-grid {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  height: 500px;
+
+  &__image {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}

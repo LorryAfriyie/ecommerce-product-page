@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CartControl } from "./CartControl";
+import { ImageSlider } from "../components/ImageSlider.tsx";
+import { useCart } from "../context/CartContext.tsx";
 
 // Product image imports
 import img1 from "/images/image-product-1.jpg";
@@ -18,20 +20,20 @@ const products = [img1, img2, img3, img4];
 const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
 
 export function ProductPage() {
+  const { slider, handleSlider } = useCart();
   const [index, setIndex] = useState<number>(0);
-
-  useEffect(() => {
-    console.log(index);
-  }, [index]);
 
   return (
     <div className="product-page">
+      {slider && <ImageSlider images={products} index={index} />}
+
       <div className="product-page__grid">
         <div className="product-page__img-col">
           <img
             src={products[index]}
             alt={products[index]}
             className={"product-img"}
+            onClick={handleSlider}
           />
 
           {/*Product Image Thumbnails*/}
