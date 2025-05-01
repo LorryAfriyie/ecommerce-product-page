@@ -25,7 +25,9 @@ export function ProductPage() {
 
   return (
     <div className="product-page">
-      {slider && <ImageSlider images={products} index={index} />}
+      {slider && (
+        <ImageSlider images={products} thumbnails={thumbnails} index={index} />
+      )}
 
       <div className="product-page__grid">
         <div className="product-page__img-col">

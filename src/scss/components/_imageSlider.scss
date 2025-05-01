@@ -1,4 +1,6 @@
 .img-slider-grid {
+  display: grid;
+  place-items: center;
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -10,5 +12,23 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  &__thumbnail-grid {
+    display: grid;
+    gap: 1.5rem;
+    place-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    margin-block-start: 2rem;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__btn {
+    all: unset;
+
+    img {
+      border-radius: 10px;
+    }
   }
 }
