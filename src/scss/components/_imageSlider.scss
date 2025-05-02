@@ -28,7 +28,16 @@
     all: unset;
 
     img {
-      border-radius: 10px;
+      border-radius: 15px;
     }
+  }
+
+  &__btn:hover {
+    cursor: pointer;
+  }
+
+  .active-thumbnail {
+    border: 2px solid var(--clr-orange);
+    border-radius: 15px;
   }
 }

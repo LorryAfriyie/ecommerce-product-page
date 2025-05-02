@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { CartControl } from "./CartControl";
 import { ImageSlider } from "../components/ImageSlider.tsx";
 import { useCart } from "../context/CartContext.tsx";
@@ -20,14 +19,11 @@ const products = [img1, img2, img3, img4];
 const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
 
 export function ProductPage() {
-  const { slider, handleSlider } = useCart();
-  const [index, setIndex] = useState<number>(0);
+  const { slider, handleSlider, index, setIndex } = useCart();
 
   return (
     <div className="product-page">
-      {slider && (
-        <ImageSlider images={products} thumbnails={thumbnails} index={index} />
-      )}
+      {slider && <ImageSlider images={products} thumbnails={thumbnails} />}
 
       <div className="product-page__grid">
         <div className="product-page__img-col">

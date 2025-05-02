@@ -14,6 +14,8 @@ type CartContext = {
   slider: boolean | null;
   setSlider: Dispatch<SetStateAction<boolean | null>>;
   handleSlider: () => void;
+  index: number;
+  setIndex: Dispatch<SetStateAction<number>>;
 };
 
 type CartContextType = {
@@ -29,6 +31,7 @@ export function useCart() {
 export function CartProvider({ children }: CartContextType) {
   const [cartQuantity, setCartQuantity] = useState<number | null>(0);
   const [slider, setSlider] = useState<boolean | null>(false);
+  const [index, setIndex] = useState<number>(0);
 
   // Increasing item quantity
   function increaseQuantity() {
@@ -60,6 +63,8 @@ export function CartProvider({ children }: CartContextType) {
         slider,
         setSlider,
         handleSlider,
+        index,
+        setIndex,
       }}
     >
       {children}
