@@ -26,6 +26,10 @@
   }
 
   &__img-col {
+    @media (min-width: 80em) {
+      padding: 2rem;
+    }
+
     .product-img {
       border-radius: 15px;
 

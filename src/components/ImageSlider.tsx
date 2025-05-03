@@ -1,4 +1,5 @@
 import { useCart } from "../context/CartContext.tsx";
+import { CloseIcon } from "./SVG.tsx";
 
 type ImageSlider = {
   images: string[];
@@ -8,15 +9,39 @@ type ImageSlider = {
 export function ImageSlider({ images, thumbnails }: ImageSlider) {
   const { handleSlider, index, setIndex } = useCart();
 
+  // Move to the next image
+  function nextImage() {
+    setIndex((current) => {
+      if (current === images.length - 1) return 0;
+      return current + 1;
+    });
+  }
+
+  // Move to the previous image
+  function prevImage() {
+    setIndex((current) => {
+      if (current === 0) return images.length - 1;
+      return current - 1;
+    });
+  }
+
   return (
     <div className={"overlay"}>
-      <button onClick={handleSlider}>Close</button>
+      <button onClick={handleSlider} className={"close-btn"}>
+        <CloseIcon />
+      </button>
       <div className="img-slider-grid">
         <img
           src={images[index]}
           alt="slider image"
           className={"center-img img-slider-grid__image"}
         />
+        <button onClick={prevImage} className={"img-slider-grid__prev"}>
+          prev
+        </button>
+        <button onClick={nextImage} className={"img-slider-grid__next"}>
+          next
+        </button>
 
         <div className={"img-slider-grid__thumbnail-grid"}>
           {thumbnails.map((thumbnail, i) => (

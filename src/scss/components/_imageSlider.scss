@@ -5,6 +5,7 @@
   width: 100%;
   margin: 0 auto;
   height: 500px;
+  position: relative;
 
   &__image {
     border-radius: 10px;
@@ -24,6 +25,20 @@
     max-width: 400px;
   }
 
+  &__next,
+  &__prev {
+    position: absolute;
+    display: block;
+  }
+
+  &__next {
+    right: 0;
+  }
+
+  &__prev {
+    left: 0;
+  }
+
   &__btn {
     all: unset;
 
@@ -39,5 +54,23 @@
   .active-thumbnail {
     border: 2px solid var(--clr-orange);
     border-radius: 15px;
+  }
+}
+
+.overlay {
+  .close-btn {
+    all: unset;
+    margin-block-end: 1rem;
+    justify-self: end;
+
+    svg {
+      path {
+        fill: var(--clr-white);
+      }
+
+      path:hover {
+        fill: var(--clr-orange);
+      }
+    }
   }
 }
