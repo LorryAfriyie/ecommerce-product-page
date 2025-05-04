@@ -26,8 +26,24 @@
   }
 
   &__img-col {
+    position: relative;
     @media (min-width: 80em) {
       padding: 2rem;
+    }
+
+    .prev-btn,
+    .next-btn {
+      position: absolute;
+      display: block;
+      top: 45%;
+    }
+
+    .next-btn {
+      right: 5%;
+    }
+
+    .prev-btn {
+      left: 5%;
     }
 
     .product-img {

@@ -1,6 +1,7 @@
 import { CartControl } from "./CartControl";
 import { ImageSlider } from "../components/ImageSlider.tsx";
 import { useCart } from "../context/CartContext.tsx";
+import { NextIcon, PrevIcon } from "../components/SVG.tsx";
 
 // Product image imports
 import img1 from "/images/image-product-1.jpg";
@@ -21,6 +22,22 @@ const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
 export function ProductPage() {
   const { slider, handleSlider, index, setIndex } = useCart();
 
+  // Move to the next image
+  function nextImage() {
+    setIndex((current) => {
+      if (current === products.length - 1) return 0;
+      return current + 1;
+    });
+  }
+
+  // Move to the previous image
+  function prevImage() {
+    setIndex((current) => {
+      if (current === 0) return products.length - 1;
+      return current - 1;
+    });
+  }
+
   return (
     <div className="product-page">
       {slider && <ImageSlider images={products} thumbnails={thumbnails} />}
@@ -33,6 +50,13 @@ export function ProductPage() {
             className={"product-img"}
             onClick={handleSlider}
           />
+
+          <button className={"prev-btn"} onClick={prevImage}>
+            <PrevIcon />
+          </button>
+          <button className={"next-btn"} onClick={nextImage}>
+            <NextIcon />
+          </button>
 
           {/*Product Image Thumbnails*/}
           <div className={"img-thumbnails"}>
