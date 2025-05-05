@@ -1,9 +1,9 @@
 .hero {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-block-start: 4rem;
 
   @media (max-width: 60em) {

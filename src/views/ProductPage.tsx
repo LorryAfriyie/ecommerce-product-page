@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { CartControl } from "./CartControl";
 import { ImageSlider } from "../components/ImageSlider.tsx";
 import { useCart } from "../context/CartContext.tsx";
@@ -21,6 +23,12 @@ const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
 
 export function ProductPage() {
   const { slider, handleSlider, index, setIndex } = useCart();
+  const [width, setWidth] = useState(getWidth());
+
+  function getWidth() {
+    const { innerWidth } = window;
+    return { innerWidth };
+  }
 
   // Move to the next image
   function nextImage() {
@@ -38,25 +46,43 @@ export function ProductPage() {
     });
   }
 
+  function handleOverlay() {
+    if (width.innerWidth >= 1024) handleSlider();
+
+    return null;
+  }
+
+  useEffect(() => {
+    function handleScreenWidth() {
+      setWidth(getWidth());
+    }
+
+    window.addEventListener("resize", handleScreenWidth);
+    return () => {
+      window.removeEventListener("resize", handleScreenWidth);
+    };
+  }, []);
+
   return (
     <div className="product-page">
       {slider && <ImageSlider images={products} thumbnails={thumbnails} />}
-
       <div className="product-page__grid">
         <div className="product-page__img-col">
-          <img
-            src={products[index]}
-            alt={products[index]}
-            className={"product-img"}
-            onClick={handleSlider}
-          />
+          <div className="product-page__img-container">
+            <img
+              src={products[index]}
+              alt={products[index]}
+              className={"product-img"}
+              onClick={handleOverlay}
+            />
 
-          <button className={"prev-btn"} onClick={prevImage}>
-            <PrevIcon />
-          </button>
-          <button className={"next-btn"} onClick={nextImage}>
-            <NextIcon />
-          </button>
+            <button className={"prev-btn"} onClick={prevImage}>
+              <PrevIcon />
+            </button>
+            <button className={"next-btn"} onClick={nextImage}>
+              <NextIcon />
+            </button>
+          </div>
 
           {/*Product Image Thumbnails*/}
           <div className={"img-thumbnails"}>

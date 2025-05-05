@@ -5,7 +5,10 @@
   width: 100%;
   margin: 0 auto;
   height: 500px;
-  position: relative;
+
+  &__img-container {
+    position: relative;
+  }
 
   &__image {
     border-radius: 10px;
@@ -27,16 +30,21 @@
 
   &__next,
   &__prev {
+    all: unset;
     position: absolute;
     display: block;
+    top: 50%;
+    background: var(--clr-white);
+    border-radius: 50%;
+    padding: 1rem;
   }
 
   &__next {
-    right: 0;
+    right: -5%;
   }
 
   &__prev {
-    left: 0;
+    left: -5%;
   }
 
   &__btn {

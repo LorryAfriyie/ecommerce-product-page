@@ -1,5 +1,5 @@
 import { useCart } from "../context/CartContext.tsx";
-import { CloseIcon } from "./SVG.tsx";
+import { CloseIcon, NextIcon, PrevIcon } from "./SVG.tsx";
 
 type ImageSlider = {
   images: string[];
@@ -31,17 +31,19 @@ export function ImageSlider({ images, thumbnails }: ImageSlider) {
         <CloseIcon />
       </button>
       <div className="img-slider-grid">
-        <img
-          src={images[index]}
-          alt="slider image"
-          className={"center-img img-slider-grid__image"}
-        />
-        <button onClick={prevImage} className={"img-slider-grid__prev"}>
-          prev
-        </button>
-        <button onClick={nextImage} className={"img-slider-grid__next"}>
-          next
-        </button>
+        <div className="img-slider-grid__img-container">
+          <img
+            src={images[index]}
+            alt="slider image"
+            className={"center-img img-slider-grid__image"}
+          />
+          <button onClick={prevImage} className={"img-slider-grid__prev"}>
+            <PrevIcon />
+          </button>
+          <button onClick={nextImage} className={"img-slider-grid__next"}>
+            <NextIcon />
+          </button>
+        </div>
 
         <div className={"img-slider-grid__thumbnail-grid"}>
           {thumbnails.map((thumbnail, i) => (
