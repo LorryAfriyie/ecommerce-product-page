@@ -1,15 +1,58 @@
 .primary-header {
   align-items: center;
-}
+  justify-content: space-between;
+  padding: 2rem 10%;
 
-.primary-navigation {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  .brand {
+    cursor: pointer;
+  }
 
-  .primary-navigation-item {
-    a {
-      text-decoration: none;
+  .primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .primary-navigation-item {
+      a {
+        text-decoration: none;
+        color: var(--clr-dark-grayish-blue);
+        cursor: pointer;
+      }
+
+      a:hover {
+        color: var(--clr-black);
+      }
+    }
+
+    // Hide navbar link items
+    @media (max-width: 60em) {
+      //display: none;
+    }
+
+    // Mobile nav-menu
+    @media (max-width: 35em) {
+      position: fixed;
+      inset: 0 30% 0 0;
+      background: var(--clr-white);
+      z-index: 1;
+      flex-direction: column;
+      padding: min(30vh, 10rem) 2em;
+    }
+  }
+
+  .profile-container {
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mobile-nav-toggle {
+    display: none;
+    @media (max-width: 35em) {
+      display: block;
+      position: absolute;
+      z-index: 3;
     }
   }
 }

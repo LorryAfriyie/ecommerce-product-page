@@ -9,7 +9,15 @@ export function Navbar() {
 
   return (
     <header className={"primary-header flex"}>
-      <div className="brand">sneaker</div>
+      <div className={"brand"}>sneaker</div>
+
+      <button
+        className={"mobile-nav-toggle"}
+        aria-controls={"primary-navigation"}
+        aria-expanded={"false"}
+      >
+        menu
+      </button>
       <nav>
         <ul id={"primary-navigation"} className={"primary-navigation flex"}>
           {navList.map((item, index) => {
@@ -21,6 +29,10 @@ export function Navbar() {
           })}
         </ul>
       </nav>
+      <div className="profile-container">
+        <div className="cart">cart</div>
+        <div className="profile">profile</div>
+      </div>
     </header>
   );
 }

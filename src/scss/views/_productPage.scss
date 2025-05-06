@@ -100,9 +100,25 @@
 
     .prev-btn,
     .next-btn {
+      all: unset;
+      background: var(--clr-white);
       position: absolute;
-      display: block;
+      display: grid;
+      place-content: center;
       top: 50%;
+      border-radius: 50%;
+      height: 10px;
+      width: 10px;
+      padding: 1rem;
+    }
+
+    .prev-btn:hover,
+    .next-btn:hover {
+      svg {
+        path {
+          stroke: var(--clr-orange);
+        }
+      }
     }
 
     .next-btn {
