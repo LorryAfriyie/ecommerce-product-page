@@ -1,4 +1,11 @@
+import { useEffect, useRef } from "react";
+import { CloseIcon, HamburgerIcon } from "./SVG.tsx";
+
 export function Navbar() {
+  const primaryNav = useRef<HTMLDivElement>(null),
+    navToggle = useRef<HTMLButtonElement>(null),
+    closeNav = useRef<HTMLButtonElement>(null);
+
   const navList = [
     { name: "Collections" },
     { name: "Men" },
@@ -7,18 +14,44 @@ export function Navbar() {
     { name: "Contact" },
   ];
 
+  useEffect(() => {
+    navToggle.current?.addEventListener("click", () => {
+      const visibility = primaryNav.current?.getAttribute("data-visible");
+
+      if (visibility === "false") {
+        primaryNav.current?.setAttribute("data-visible", "true");
+        navToggle.current?.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    closeNav.current?.addEventListener("click", () => {
+      const visibility = primaryNav.current?.getAttribute("data-visible");
+
+      if (visibility === "true") {
+        primaryNav.current?.setAttribute("data-visible", "false");
+        navToggle.current?.setAttribute("aria-expanded", "false");
+      }
+    });
+  }, []);
+
   return (
     <header className={"primary-header flex"}>
-      <div className={"brand"}>sneaker</div>
-
       <button
         className={"mobile-nav-toggle"}
         aria-controls={"primary-navigation"}
         aria-expanded={"false"}
+        ref={navToggle}
       >
-        menu
+        <HamburgerIcon />
       </button>
-      <nav>
+
+      <div className={"brand"}>sneaker</div>
+
+      <div className="nav-menu" data-visible={"false"} ref={primaryNav}>
+        <button className={"close"} ref={closeNav}>
+          <CloseIcon />
+        </button>
+
         <ul id={"primary-navigation"} className={"primary-navigation flex"}>
           {navList.map((item, index) => {
             return (
@@ -28,7 +61,8 @@ export function Navbar() {
             );
           })}
         </ul>
-      </nav>
+      </div>
+      <nav></nav>
       <div className="profile-container">
         <div className="cart">cart</div>
         <div className="profile">profile</div>

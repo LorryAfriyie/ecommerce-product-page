@@ -6,10 +6,12 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   font-size: var(--font);
   overflow-x: hidden;
   font-family: "Kumbh Sans", sans-serif;
+  display: grid;
+  grid-template-rows: min-content 1fr;
 }
 
 img {
@@ -23,5 +25,5 @@ img {
 
 .flex {
   display: flex;
-  gap: var(--gap, 2rem);
+  //gap: var(--gap, 2rem);
 }
