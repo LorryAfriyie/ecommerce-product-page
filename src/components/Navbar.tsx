@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { CloseIcon, HamburgerIcon } from "./SVG.tsx";
+import { CartIcon, CloseIcon, HamburgerIcon } from "./SVG.tsx";
+import avatar from "/images/image-avatar.png";
 
 export function Navbar() {
   const primaryNav = useRef<HTMLDivElement>(null),
@@ -45,27 +46,33 @@ export function Navbar() {
         <HamburgerIcon />
       </button>
 
-      <div className={"brand"}>sneaker</div>
+      <div className={"brand"}>sneakers</div>
 
       <div className="nav-menu" data-visible={"false"} ref={primaryNav}>
-        <button className={"close"} ref={closeNav}>
-          <CloseIcon />
-        </button>
+        <nav>
+          <button className={"close"} ref={closeNav}>
+            <CloseIcon />
+          </button>
 
-        <ul id={"primary-navigation"} className={"primary-navigation flex"}>
-          {navList.map((item, index) => {
-            return (
-              <li key={index} className={"primary-navigation-item"}>
-                <a href="#">{item.name}</a>
-              </li>
-            );
-          })}
-        </ul>
+          <ul id={"primary-navigation"} className={"primary-navigation flex"}>
+            {navList.map((item, index) => {
+              return (
+                <li key={index} className={"primary-navigation-item"}>
+                  <a href="#">{item.name}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
-      <nav></nav>
+
       <div className="profile-container">
-        <div className="cart">cart</div>
-        <div className="profile">profile</div>
+        <div className="cart">
+          <CartIcon />
+        </div>
+        <div className="profile">
+          <img src={avatar} alt="" />
+        </div>
       </div>
     </header>
   );

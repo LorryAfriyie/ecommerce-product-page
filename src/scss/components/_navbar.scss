@@ -1,23 +1,34 @@
 .primary-header {
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 10%;
+  padding: 1.25rem 7%;
 
   .brand {
     cursor: pointer;
+    font-weight: 700;
+    font-size: 1.75rem;
+    @media (min-width: 60em) {
+      margin-inline-end: 3rem;
+      font-size: 2rem;
+    }
   }
 
   .primary-navigation {
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 2rem;
+    gap: 1.5rem;
 
     .primary-navigation-item {
       a {
         text-decoration: none;
-        color: var(--clr-dark-grayish-blue);
+
+        color: var(--clr-black);
         cursor: pointer;
+
+        @media (max-width: 60em) {
+          font-weight: 700;
+        }
       }
 
       a:hover {
@@ -28,7 +39,7 @@
     // Mobile nav-menu
     @media (max-width: 60em) {
       flex-direction: column;
-      padding: min(30vh, 10rem) 2em;
+      padding: min(30vh, 6rem) 2em;
     }
   }
 
@@ -45,7 +56,7 @@
 
       @media (max-width: 60em) {
         position: absolute;
-        inset: 0.25% 10% 90% 15%;
+        inset: 0 0 90% 11%;
       }
     }
 
@@ -79,7 +90,20 @@
     margin-left: auto;
     display: grid;
     place-items: center;
+    gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
+
+    .profile {
+      img {
+        aspect-ratio: 1;
+        width: 30px;
+      }
+    }
+
+    .cart {
+      display: grid;
+      place-items: center;
+    }
   }
 
   .mobile-nav-toggle {
@@ -89,6 +113,7 @@
     @media (max-width: 60em) {
       display: grid;
       place-content: center;
+      margin-inline-end: 0.75rem;
       //position: absolute;
       //z-index: 3;
     }
