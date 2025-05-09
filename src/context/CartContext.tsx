@@ -49,6 +49,10 @@ export function CartProvider({ children }: CartContextType) {
       );
   }
 
+  function productCalculation() {
+    if (cartQuantity) return cartQuantity * 125;
+  }
+
   // Toggle Image Slider
   function handleSlider() {
     setSlider((current) => !current);

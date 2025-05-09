@@ -36,42 +36,44 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className={"primary-header flex"}>
-      <button
-        className={"mobile-nav-toggle"}
-        aria-controls={"primary-navigation"}
-        aria-expanded={"false"}
-        ref={navToggle}
-      >
-        <HamburgerIcon />
-      </button>
+    <header className={"primary-header"}>
+      <div className="primary-header__nav-container flex">
+        <button
+          className={"mobile-nav-toggle"}
+          aria-controls={"primary-navigation"}
+          aria-expanded={"false"}
+          ref={navToggle}
+        >
+          <HamburgerIcon />
+        </button>
 
-      <div className={"brand"}>sneakers</div>
+        <div className={"brand"}>sneakers</div>
 
-      <div className="nav-menu" data-visible={"false"} ref={primaryNav}>
-        <nav>
-          <button className={"close"} ref={closeNav}>
-            <CloseIcon />
-          </button>
+        <div className="nav-menu" data-visible={"false"} ref={primaryNav}>
+          <nav>
+            <button className={"close"} ref={closeNav}>
+              <CloseIcon />
+            </button>
 
-          <ul id={"primary-navigation"} className={"primary-navigation flex"}>
-            {navList.map((item, index) => {
-              return (
-                <li key={index} className={"primary-navigation-item"}>
-                  <a href="#">{item.name}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </div>
-
-      <div className="profile-container">
-        <div className="cart">
-          <CartIcon />
+            <ul id={"primary-navigation"} className={"primary-navigation flex"}>
+              {navList.map((item, index) => {
+                return (
+                  <li key={index} className={"primary-navigation-item"}>
+                    <a href="#">{item.name}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
         </div>
-        <div className="profile">
-          <img src={avatar} alt="" />
+
+        <div className="profile-container">
+          <div className="cart">
+            <CartIcon />
+          </div>
+          <div className="profile">
+            <img src={avatar} alt="" />
+          </div>
         </div>
       </div>
     </header>

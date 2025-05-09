@@ -1,7 +1,16 @@
 .primary-header {
   align-items: center;
-  justify-content: space-between;
+  //justify-content: space-between;
   padding: 1.25rem 7%;
+
+  &__nav-container {
+    align-items: center;
+
+    @media (min-width: 60em) {
+      border-bottom: 1px solid var(--clr-grayish-blue);
+      padding-block-end: 2.25rem;
+    }
+  }
 
   .brand {
     cursor: pointer;
@@ -22,17 +31,37 @@
     .primary-navigation-item {
       a {
         text-decoration: none;
-
-        color: var(--clr-black);
+        color: var(--clr-dark-grayish-blue);
         cursor: pointer;
+        position: relative;
 
         @media (max-width: 60em) {
           font-weight: 700;
+          color: var(--clr-black);
         }
       }
 
       a:hover {
         color: var(--clr-black);
+      }
+
+      @media (min-width: 60em) {
+        a::after {
+          content: "";
+          height: 3px;
+          width: 100%;
+          background-color: var(--clr-orange);
+          position: absolute;
+          left: 0;
+          bottom: -3.25rem;
+          opacity: 0;
+          transition: all 0.2s;
+          pointer-events: none;
+        }
+
+        a:hover::after {
+          opacity: 1;
+        }
       }
     }
 
@@ -96,7 +125,16 @@
     .profile {
       img {
         aspect-ratio: 1;
-        width: 30px;
+        width: 50px;
+
+        @media (max-width: 60em) {
+          width: 30px;
+        }
+      }
+
+      img:hover {
+        border: 2px solid orange;
+        border-radius: 50%;
       }
     }
 
