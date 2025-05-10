@@ -1,18 +1,20 @@
 # Frontend Mentor - E-commerce product page solution
 
-This is a solution to the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to
+the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6).
+Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -35,11 +37,15 @@ Users should be able to:
 
 ![](./screenshot.jpg)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the
+page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long
+the page is. If it's very long, it might be best to crop it.
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
+Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free
+option, so you don't need to purchase it.
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image
+above.
 
 ### Links
 
@@ -61,44 +67,43 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
+- Utilizing the tab index attribute to allow a div to be focused on
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+
+<div tabindex="0">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores cupiditate dolor dolorum
+    ea, et ex itaque laborum maxime non officiis pariatur perspiciatis praesentium tempora voluptate? Esse fugiat modi
+    tempore?
+</div>
 ```
 
+- Using pseudo selector to be able to create unique navbar link hover styles
 
-Using pseudo selector to be able to create unique navbar link hover styles
 ```css
  a::before {
-  content: '';
-  height: 4px;
-  width: 100%;
-  background-color: var(--clr-orange);
-  position: absolute;
-  opacity: 0;
-  inset: 56px 0 0 0;
-  transition: all .2s;
-  pointer-events: none;
+    content: '';
+    height: 4px;
+    width: 100%;
+    background-color: var(--clr-orange);
+    position: absolute;
+    opacity: 0;
+    inset: 56px 0 0 0;
+    transition: all .2s;
+    pointer-events: none;
 }
 
 a:hover::before {
-  opacity: 1;
+    opacity: 1;
 }
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
 ```
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will
+  use it going forward.
+- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd
+  recommend it to anyone still learning this concept.
 
 ## Author
 

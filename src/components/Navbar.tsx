@@ -5,7 +5,8 @@ import avatar from "/images/image-avatar.png";
 export function Navbar() {
   const primaryNav = useRef<HTMLDivElement>(null),
     navToggle = useRef<HTMLButtonElement>(null),
-    closeNav = useRef<HTMLButtonElement>(null);
+    closeNav = useRef<HTMLButtonElement>(null),
+    dropdown = useRef<HTMLDivElement>(null);
 
   const navList = [
     { name: "Collections" },
@@ -68,9 +69,16 @@ export function Navbar() {
         </div>
 
         <div className="profile-container">
-          <div className="cart">
-            <CartIcon />
+          <div className="profile-container__dropdown">
+            <div className="cart" tabIndex={0}>
+              <CartIcon />
+            </div>
+
+            <div className="profile-container__dropdown-menu">
+              dropdown content
+            </div>
           </div>
+
           <div className="profile">
             <img src={avatar} alt="" />
           </div>

@@ -1,0 +1,28 @@
+.profile-container {
+  &__dropdown {
+    position: relative;
+    z-index: 9999;
+  }
+
+  &__dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 1rem);
+    background-color: var(--clr-white);
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition:
+      opacity 150ms ease-in-out,
+      transform 150ms ease-in-out;
+  }
+
+  &__dropdown > .cart:focus + &__dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
