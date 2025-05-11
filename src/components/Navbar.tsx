@@ -1,12 +1,26 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CartIcon, CloseIcon, HamburgerIcon } from "./SVG.tsx";
+import { useCart } from "../context/CartContext.tsx";
 import avatar from "/images/image-avatar.png";
 
 export function Navbar() {
+  const { cartQuantity } = useCart();
   const primaryNav = useRef<HTMLDivElement>(null),
     navToggle = useRef<HTMLButtonElement>(null),
     closeNav = useRef<HTMLButtonElement>(null),
     dropdown = useRef<HTMLDivElement>(null);
+
+  const [open, setOpen] = useState<boolean>(false);
+
+  function openDropdown() {
+    // Update boolean value
+    setOpen((current) => !current);
+
+    // Change the opacity of the dropdown when open state is true/false
+    if (open && dropdown.current) {
+      dropdown.current.style.opacity = "1";
+    } else dropdown.current!.style.opacity = "0";
+  }
 
   const navList = [
     { name: "Collections" },
@@ -70,12 +84,22 @@ export function Navbar() {
 
         <div className="profile-container">
           <div className="profile-container__dropdown">
-            <div className="cart" tabIndex={0}>
+            <div className="cart" onClick={openDropdown}>
+              <span className={"quantity-badge"}>{cartQuantity}</span>
               <CartIcon />
             </div>
 
-            <div className="profile-container__dropdown-menu">
-              dropdown content
+            <div className="profile-container__dropdown-menu" ref={dropdown}>
+              <div className={"cart-header"}>
+                <p>Cart</p>
+              </div>
+              <div className="cart-content">
+                {cartQuantity === 0 ? (
+                  <p>Your cart is empty</p>
+                ) : (
+                  <p>{cartQuantity}</p>
+                )}
+              </div>
             </div>
           </div>
 

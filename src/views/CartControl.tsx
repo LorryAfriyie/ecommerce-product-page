@@ -13,7 +13,6 @@ export function CartControl() {
 
   return (
     <div className="cart-control">
-      {show && <p>wow</p>}
       <QuantityBtn
         icon={<SubtractIcon />}
         icon2={<AddIcon />}

@@ -141,6 +141,12 @@
     .cart {
       display: grid;
       place-items: center;
+      position: relative;
+
+      .quantity-badge {
+        position: absolute;
+        transform: translate(90%, -55%);
+      }
     }
   }
 
