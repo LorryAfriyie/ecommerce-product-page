@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { CartIcon, CloseIcon, HamburgerIcon } from "./SVG.tsx";
+import { CloseIcon, HamburgerIcon } from "./SVG.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import avatar from "/images/image-avatar.png";
 
 export function Navbar() {
-  const { cartQuantity } = useCart();
+  const { product, deleteFromCart } = useCart();
   const primaryNav = useRef<HTMLDivElement>(null),
     navToggle = useRef<HTMLButtonElement>(null),
     closeNav = useRef<HTMLButtonElement>(null),
@@ -15,11 +15,11 @@ export function Navbar() {
   function openDropdown() {
     // Update boolean value
     setOpen((current) => !current);
-
+    console.log(open);
     // Change the opacity of the dropdown when open state is true/false
-    if (open && dropdown.current) {
-      dropdown.current.style.opacity = "1";
-    } else dropdown.current!.style.opacity = "0";
+    /*if (open && dropdown.current) {
+                                                                                                                                                                          dropdown.current.style.opacity = "1";
+                                                                                                                                                                        } else dropdown.current!.style.opacity = "0";*/
   }
 
   const navList = [
@@ -48,11 +48,13 @@ export function Navbar() {
         navToggle.current?.setAttribute("aria-expanded", "false");
       }
     });
+
+    console.log(product.prodPrice);
   }, []);
 
   return (
     <header className={"primary-header"}>
-      <div className="primary-header__nav-container flex">
+      <div className={"primary-header__nav-container flex"}>
         <button
           className={"mobile-nav-toggle"}
           aria-controls={"primary-navigation"}
@@ -64,7 +66,7 @@ export function Navbar() {
 
         <div className={"brand"}>sneakers</div>
 
-        <div className="nav-menu" data-visible={"false"} ref={primaryNav}>
+        <div className={"nav-menu"} data-visible={"false"} ref={primaryNav}>
           <nav>
             <button className={"close"} ref={closeNav}>
               <CloseIcon />
@@ -82,28 +84,50 @@ export function Navbar() {
           </nav>
         </div>
 
-        <div className="profile-container">
-          <div className="profile-container__dropdown">
-            <div className="cart" onClick={openDropdown}>
-              <span className={"quantity-badge"}>{cartQuantity}</span>
+        <div className={"profile-container"}>
+          <div className={"profile-container__dropdown"}>
+            <button onClick={openDropdown}>cart</button>
+            {/* <div className="cart">
+              <span className={"quantity-badge"}>{product.prodQuantity}</span>
               <CartIcon />
-            </div>
+            </div>*/}
 
-            <div className="profile-container__dropdown-menu" ref={dropdown}>
-              <div className={"cart-header"}>
-                <p>Cart</p>
+            {open && (
+              <div
+                className={`profile-container__dropdown-menu ${open && "open"}`}
+                ref={dropdown}
+              >
+                <div className={"cart-header"}>
+                  <p>Cart</p>
+                </div>
+                <div className={"cart-content"}>
+                  {product.prodQuantity === 0 ? (
+                    <p>Cart is empty</p>
+                  ) : (
+                    <div className={"cart-content-grid"}>
+                      <div className={"product-img"}>
+                        <img src={product.prodImg} alt="" />
+                      </div>
+                      <div className={"product-details"}>
+                        <p>{product.prodName}</p>
+                        <p>{product.prodPrice}</p>
+                      </div>
+                      <div className={"delete"}>
+                        <button
+                          className={"empty-cart"}
+                          onClick={deleteFromCart}
+                        >
+                          delete
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="cart-content">
-                {cartQuantity === 0 ? (
-                  <p>Your cart is empty</p>
-                ) : (
-                  <p>{cartQuantity}</p>
-                )}
-              </div>
-            </div>
+            )}
           </div>
 
-          <div className="profile">
+          <div className={"profile"}>
             <img src={avatar} alt="" />
           </div>
         </div>

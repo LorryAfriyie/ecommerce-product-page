@@ -98,6 +98,15 @@ a:hover::before {
 }
 ```
 
+- Using scrollbar-width property to remove overflow-y: scroll scrollbar
+
+```css
+.example {
+    scrollbar-width: none;
+}
+
+```
+
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will

@@ -10,16 +10,34 @@ import {
 type CartContext = {
   increaseQuantity: () => void;
   decreaseQuantity: () => void;
+  addToCart: (img: string) => void;
   cartQuantity: number | null;
+  deleteFromCart: () => void;
   slider: boolean | null;
   setSlider: Dispatch<SetStateAction<boolean | null>>;
   handleSlider: () => void;
   index: number;
   setIndex: Dispatch<SetStateAction<number>>;
+
+  product: {
+    prodName: string;
+    prodPrice?: number;
+    prodQuantity?: number;
+    prodFinalPrice?: number;
+    prodImg?: string;
+  };
 };
 
 type CartContextType = {
   children: ReactNode;
+};
+
+type ProductDetails = {
+  prodName: string;
+  prodPrice?: number;
+  prodQuantity?: number;
+  prodFinalPrice?: number;
+  prodImg?: string;
 };
 
 const CartContext = createContext({} as CartContext);
@@ -32,6 +50,14 @@ export function CartProvider({ children }: CartContextType) {
   const [cartQuantity, setCartQuantity] = useState<number | null>(0);
   const [slider, setSlider] = useState<boolean | null>(false);
   const [index, setIndex] = useState<number>(0);
+
+  const [product, setProduct] = useState<ProductDetails>({
+    prodName: "",
+    prodPrice: 125,
+    prodQuantity: 0,
+    prodFinalPrice: 0,
+    prodImg: "",
+  });
 
   // Increasing item quantity
   function increaseQuantity() {
@@ -50,12 +76,32 @@ export function CartProvider({ children }: CartContextType) {
   }
 
   function productCalculation() {
-    if (cartQuantity) return cartQuantity * 125;
+    if (cartQuantity && product.prodPrice)
+      return cartQuantity * product.prodPrice;
   }
 
   // Toggle Image Slider
   function handleSlider() {
     setSlider((current) => !current);
+  }
+
+  function addToCart(img: string) {
+    setProduct({
+      prodName: "Fall Limited Edition Sneakers",
+      prodQuantity: cartQuantity as number,
+      prodFinalPrice: productCalculation(),
+      prodPrice: product.prodPrice,
+      prodImg: img,
+    });
+  }
+
+  function deleteFromCart() {
+    setProduct({
+      prodName: "",
+      prodQuantity: 0,
+      prodFinalPrice: 0,
+      prodImg: "",
+    });
   }
 
   return (
@@ -69,6 +115,9 @@ export function CartProvider({ children }: CartContextType) {
         handleSlider,
         index,
         setIndex,
+        product,
+        addToCart,
+        deleteFromCart,
       }}
     >
       {children}

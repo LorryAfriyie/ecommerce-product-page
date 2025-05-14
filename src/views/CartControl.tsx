@@ -1,15 +1,14 @@
-import { useState } from "react";
 import { Button, QuantityBtn } from "../components/Button";
 import { AddIcon, CartIcon, SubtractIcon } from "../components/SVG.tsx";
 import { useCart } from "../context/CartContext.tsx";
 
-export function CartControl() {
-  const { increaseQuantity, decreaseQuantity, cartQuantity } = useCart();
-  const [show, setShow] = useState<boolean>(false);
+type CartControlProps = {
+  img: string;
+};
 
-  function handleShow() {
-    setShow((current) => !current);
-  }
+export function CartControl({ img }: CartControlProps) {
+  const { increaseQuantity, decreaseQuantity, cartQuantity, addToCart } =
+    useCart();
 
   return (
     <div className="cart-control">
@@ -25,7 +24,7 @@ export function CartControl() {
         text="Add to Cart"
         btnClass="add-to-cart"
         icon={<CartIcon />}
-        btnFunction={handleShow}
+        btnFunction={() => addToCart(img)}
       />
     </div>
   );
