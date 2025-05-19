@@ -50,10 +50,11 @@ export function CartProvider({ children }: CartContextType) {
   const [cartQuantity, setCartQuantity] = useState<number | null>(0);
   const [slider, setSlider] = useState<boolean | null>(false);
   const [index, setIndex] = useState<number>(0);
+  const PRICE = 125;
 
   const [product, setProduct] = useState<ProductDetails>({
     prodName: "",
-    prodPrice: 125,
+    prodPrice: PRICE,
     prodQuantity: 0,
     prodFinalPrice: 0,
     prodImg: "",
@@ -76,8 +77,7 @@ export function CartProvider({ children }: CartContextType) {
   }
 
   function productCalculation() {
-    if (cartQuantity && product.prodPrice)
-      return cartQuantity * product.prodPrice;
+    if (cartQuantity) return cartQuantity * PRICE;
   }
 
   // Toggle Image Slider
@@ -90,7 +90,7 @@ export function CartProvider({ children }: CartContextType) {
       prodName: "Fall Limited Edition Sneakers",
       prodQuantity: cartQuantity as number,
       prodFinalPrice: productCalculation(),
-      prodPrice: product.prodPrice,
+      prodPrice: product.prodPrice != undefined ? product.prodPrice : PRICE,
       prodImg: img,
     });
   }
@@ -102,6 +102,7 @@ export function CartProvider({ children }: CartContextType) {
       prodFinalPrice: 0,
       prodImg: "",
     });
+    setCartQuantity(0);
   }
 
   return (

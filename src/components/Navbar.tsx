@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { CloseIcon, HamburgerIcon } from "./SVG.tsx";
+import { CartIcon, CloseIcon, DeleteIcon, HamburgerIcon } from "./SVG.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import avatar from "/images/image-avatar.png";
+import { formatCurrency } from "../utilities/currencyFormat.ts";
 
 export function Navbar() {
   const { product, deleteFromCart } = useCart();
@@ -15,11 +16,11 @@ export function Navbar() {
   function openDropdown() {
     // Update boolean value
     setOpen((current) => !current);
-    console.log(open);
-    // Change the opacity of the dropdown when open state is true/false
-    /*if (open && dropdown.current) {
-                                                                                                                                                                          dropdown.current.style.opacity = "1";
-                                                                                                                                                                        } else dropdown.current!.style.opacity = "0";*/
+  }
+
+  function quantity() {
+    if (product.prodQuantity !== undefined && product.prodQuantity > 0)
+      return product.prodQuantity;
   }
 
   const navList = [
@@ -48,8 +49,6 @@ export function Navbar() {
         navToggle.current?.setAttribute("aria-expanded", "false");
       }
     });
-
-    console.log(product.prodPrice);
   }, []);
 
   return (
@@ -63,9 +62,7 @@ export function Navbar() {
         >
           <HamburgerIcon />
         </button>
-
         <div className={"brand"}>sneakers</div>
-
         <div className={"nav-menu"} data-visible={"false"} ref={primaryNav}>
           <nav>
             <button className={"close"} ref={closeNav}>
@@ -86,11 +83,12 @@ export function Navbar() {
 
         <div className={"profile-container"}>
           <div className={"profile-container__dropdown"}>
-            <button onClick={openDropdown}>cart</button>
-            {/* <div className="cart">
-              <span className={"quantity-badge"}>{product.prodQuantity}</span>
-              <CartIcon />
-            </div>*/}
+            <div className={"profile-container__cart"} onClick={openDropdown}>
+              <span className={"quantity-badge"}>{quantity()}</span>
+              <button className={"profile-container__cart-btn"}>
+                <CartIcon />
+              </button>
+            </div>
 
             {open && (
               <div
@@ -102,24 +100,38 @@ export function Navbar() {
                 </div>
                 <div className={"cart-content"}>
                   {product.prodQuantity === 0 ? (
-                    <p>Cart is empty</p>
+                    <div className={"cart-content__message-block"}>
+                      <p className={"cart-content__message"}>
+                        Your cart is empty.
+                      </p>
+                    </div>
                   ) : (
-                    <div className={"cart-content-grid"}>
-                      <div className={"product-img"}>
-                        <img src={product.prodImg} alt="" />
+                    <div>
+                      <div className={"cart-content-grid"}>
+                        <div className={"product-img"}>
+                          <img src={product.prodImg} alt="" />
+                        </div>
+                        <div className={"product-details"}>
+                          <p className={"product-details__name"}>
+                            {product.prodName}
+                          </p>
+                          <p className={"product-details__price"}>
+                            <span>{`${formatCurrency(product.prodPrice)} x ${product.prodQuantity}`}</span>
+                            <span
+                              className={"final-price"}
+                            >{` ${formatCurrency(product.prodFinalPrice)}`}</span>
+                          </p>
+                        </div>
+                        <div className={"delete"}>
+                          <button
+                            className={"empty-cart"}
+                            onClick={deleteFromCart}
+                          >
+                            <DeleteIcon />
+                          </button>
+                        </div>
                       </div>
-                      <div className={"product-details"}>
-                        <p>{product.prodName}</p>
-                        <p>{product.prodPrice}</p>
-                      </div>
-                      <div className={"delete"}>
-                        <button
-                          className={"empty-cart"}
-                          onClick={deleteFromCart}
-                        >
-                          delete
-                        </button>
-                      </div>
+                      <button className="checkout">Checkout</button>
                     </div>
                   )}
                 </div>
