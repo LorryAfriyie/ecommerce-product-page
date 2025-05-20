@@ -13,18 +13,18 @@ type CartContext = {
   addToCart: (img: string) => void;
   cartQuantity: number | null;
   deleteFromCart: () => void;
-  slider: boolean | null;
-  setSlider: Dispatch<SetStateAction<boolean | null>>;
+  slider: boolean;
+  setSlider: Dispatch<SetStateAction<boolean>>;
   handleSlider: () => void;
   index: number;
   setIndex: Dispatch<SetStateAction<number>>;
 
   product: {
     prodName: string;
-    prodPrice?: number;
-    prodQuantity?: number;
-    prodFinalPrice?: number;
-    prodImg?: string;
+    prodPrice: number;
+    prodQuantity: number;
+    prodFinalPrice: number;
+    prodImg: string;
   };
 };
 
@@ -34,10 +34,10 @@ type CartContextType = {
 
 type ProductDetails = {
   prodName: string;
-  prodPrice?: number;
-  prodQuantity?: number;
-  prodFinalPrice?: number;
-  prodImg?: string;
+  prodPrice: number;
+  prodQuantity: number;
+  prodFinalPrice: number;
+  prodImg: string;
 };
 
 const CartContext = createContext({} as CartContext);
@@ -47,8 +47,8 @@ export function useCart() {
 }
 
 export function CartProvider({ children }: CartContextType) {
-  const [cartQuantity, setCartQuantity] = useState<number | null>(0);
-  const [slider, setSlider] = useState<boolean | null>(false);
+  const [cartQuantity, setCartQuantity] = useState<number>(0);
+  const [slider, setSlider] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
   const PRICE = 125;
 
@@ -62,22 +62,19 @@ export function CartProvider({ children }: CartContextType) {
 
   // Increasing item quantity
   function increaseQuantity() {
-    if (typeof cartQuantity === "number")
-      setCartQuantity((cartQuantity) =>
-        cartQuantity != null ? cartQuantity + 1 : null,
-      );
+    setCartQuantity((cartQuantity) => cartQuantity + 1);
   }
 
   // Decreasing item quantity
   function decreaseQuantity() {
-    if (typeof cartQuantity === "number")
-      setCartQuantity((cartQuantity) =>
-        cartQuantity != null ? (cartQuantity > 1 ? cartQuantity - 1 : 0) : null,
-      );
+    setCartQuantity((cartQuantity) =>
+      cartQuantity > 1 ? cartQuantity - 1 : 0,
+    );
   }
 
-  function productCalculation() {
+  function productCalculation(): number {
     if (cartQuantity) return cartQuantity * PRICE;
+    return cartQuantity * PRICE;
   }
 
   // Toggle Image Slider
@@ -90,7 +87,7 @@ export function CartProvider({ children }: CartContextType) {
       prodName: "Fall Limited Edition Sneakers",
       prodQuantity: cartQuantity as number,
       prodFinalPrice: productCalculation(),
-      prodPrice: product.prodPrice != undefined ? product.prodPrice : PRICE,
+      prodPrice: product.prodPrice != 0 ? product.prodPrice : PRICE,
       prodImg: img,
     });
   }
@@ -99,6 +96,7 @@ export function CartProvider({ children }: CartContextType) {
     setProduct({
       prodName: "",
       prodQuantity: 0,
+      prodPrice: 0,
       prodFinalPrice: 0,
       prodImg: "",
     });
