@@ -33,6 +33,7 @@
 
     .cart-content {
       padding: 1rem;
+      margin: auto;
 
       &__message-block {
         display: grid;
@@ -106,7 +107,7 @@
     opacity: 1;
 
     @media (max-width: 60em) {
-      transform: translateX(-67%);
+      transform: translateX(-75%);
     }
   }
 }
