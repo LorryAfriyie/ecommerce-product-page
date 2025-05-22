@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { CartIcon, CloseIcon, DeleteIcon, HamburgerIcon } from "./SVG.tsx";
+import { CloseIcon, HamburgerIcon } from "./SVG.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import avatar from "/images/image-avatar.png";
-import { formatCurrency } from "../utilities/currencyFormat.ts";
+import { DropdownMenu } from "./DropdownMenu.tsx";
+import { Cart } from "./Cart.tsx";
 
 export function Navbar() {
-  const { product, deleteFromCart } = useCart();
+  const { product } = useCart();
   const primaryNav = useRef<HTMLDivElement>(null),
     navToggle = useRef<HTMLButtonElement>(null),
     closeNav = useRef<HTMLButtonElement>(null),
@@ -19,8 +20,7 @@ export function Navbar() {
   }
 
   function quantity() {
-    if (product.prodQuantity !== undefined && product.prodQuantity > 0)
-      return product.prodQuantity;
+    return product.prodQuantity;
   }
 
   const navList = [
@@ -83,60 +83,9 @@ export function Navbar() {
 
         <div className={"profile-container"}>
           <div className={"profile-container__dropdown"}>
-            <div className={"profile-container__cart"} onClick={openDropdown}>
-              <span className={"quantity-badge"}>{quantity()}</span>
-              <button className={"profile-container__cart-btn"}>
-                <CartIcon />
-              </button>
-            </div>
+            <Cart openDropdown={openDropdown} quantity={quantity} />
 
-            {open && (
-              <div
-                className={`profile-container__dropdown-menu ${open && "open"}`}
-                ref={dropdown}
-              >
-                <div className={"cart-header"}>
-                  <p>Cart</p>
-                </div>
-                <div className={"cart-content"}>
-                  {product.prodQuantity === 0 ? (
-                    <div className={"cart-content__message-block"}>
-                      <p className={"cart-content__message"}>
-                        Your cart is empty.
-                      </p>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className={"cart-content-grid"}>
-                        <div className={"product-img"}>
-                          <img src={product.prodImg} alt="" />
-                        </div>
-                        <div className={"product-details"}>
-                          <p className={"product-details__name"}>
-                            {product.prodName}
-                          </p>
-                          <p className={"product-details__price"}>
-                            <span>{`${formatCurrency(product.prodPrice)} x ${product.prodQuantity}`}</span>
-                            <span
-                              className={"final-price"}
-                            >{` ${formatCurrency(product.prodFinalPrice)}`}</span>
-                          </p>
-                        </div>
-                        <div className={"delete"}>
-                          <button
-                            className={"empty-cart"}
-                            onClick={deleteFromCart}
-                          >
-                            <DeleteIcon />
-                          </button>
-                        </div>
-                      </div>
-                      <button className="checkout">Checkout</button>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
+            {open && <DropdownMenu ref={dropdown} open={open} />}
           </div>
 
           <div className={"profile"}>
