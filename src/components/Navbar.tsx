@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { CloseIcon, HamburgerIcon } from "./SVG.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import avatar from "/images/image-avatar.png";
@@ -64,21 +64,7 @@ export function Navbar() {
         </button>
         <div className={"brand"}>sneakers</div>
         <div className={"nav-menu"} data-visible={"false"} ref={primaryNav}>
-          <nav>
-            <button className={"close"} ref={closeNav}>
-              <CloseIcon />
-            </button>
-
-            <ul id={"primary-navigation"} className={"primary-navigation flex"}>
-              {navList.map((item, index) => {
-                return (
-                  <li key={index} className={"primary-navigation-item"}>
-                    <a href="#">{item.name}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+          <NavbarList ref={closeNav} />
         </div>
 
         <div className={"profile-container"}>
@@ -96,3 +82,31 @@ export function Navbar() {
     </header>
   );
 }
+
+const NavbarList = forwardRef<HTMLButtonElement>((props, ref) => {
+  const navList = [
+    { name: "Collections" },
+    { name: "Men" },
+    { name: "Women" },
+    { name: "About" },
+    { name: "Contact" },
+  ];
+
+  return (
+    <nav>
+      <button className={"close"} ref={ref}>
+        <CloseIcon />
+      </button>
+
+      <ul id={"primary-navigation"} className={"primary-navigation flex"}>
+        {navList.map((item, index) => {
+          return (
+            <li key={index} className={"primary-navigation-item"}>
+              <a href="#">{item.name}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
+});
