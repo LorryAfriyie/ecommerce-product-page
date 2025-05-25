@@ -23,14 +23,6 @@ export function Navbar() {
     return product.prodQuantity;
   }
 
-  const navList = [
-    { name: "Collections" },
-    { name: "Men" },
-    { name: "Women" },
-    { name: "About" },
-    { name: "Contact" },
-  ];
-
   useEffect(() => {
     navToggle.current?.addEventListener("click", () => {
       const visibility = primaryNav.current?.getAttribute("data-visible");
@@ -38,6 +30,7 @@ export function Navbar() {
       if (visibility === "false") {
         primaryNav.current?.setAttribute("data-visible", "true");
         navToggle.current?.setAttribute("aria-expanded", "true");
+        document.body.classList.add("another-overlay");
       }
     });
 
@@ -47,6 +40,7 @@ export function Navbar() {
       if (visibility === "true") {
         primaryNav.current?.setAttribute("data-visible", "false");
         navToggle.current?.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("another-overlay");
       }
     });
   }, []);
@@ -83,7 +77,7 @@ export function Navbar() {
   );
 }
 
-const NavbarList = forwardRef<HTMLButtonElement>((props, ref) => {
+const NavbarList = forwardRef<HTMLButtonElement>(({}, ref) => {
   const navList = [
     { name: "Collections" },
     { name: "Men" },
