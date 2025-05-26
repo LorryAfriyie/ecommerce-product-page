@@ -5,7 +5,7 @@ import avatar from "/images/image-avatar.png";
 import { DropdownMenu } from "./DropdownMenu.tsx";
 import { Cart } from "./Cart.tsx";
 
-export function Navbar() {
+export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
   const { product } = useCart();
   const primaryNav = useRef<HTMLDivElement>(null),
     navToggle = useRef<HTMLButtonElement>(null),
@@ -30,7 +30,8 @@ export function Navbar() {
       if (visibility === "false") {
         primaryNav.current?.setAttribute("data-visible", "true");
         navToggle.current?.setAttribute("aria-expanded", "true");
-        document.body.classList.add("another-overlay");
+
+        if (ref) ref.current.style.display = "block";
       }
     });
 
@@ -40,7 +41,8 @@ export function Navbar() {
       if (visibility === "true") {
         primaryNav.current?.setAttribute("data-visible", "false");
         navToggle.current?.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("another-overlay");
+
+        if (ref) ref.current.style.display = "none";
       }
     });
   }, []);
@@ -75,7 +77,7 @@ export function Navbar() {
       </div>
     </header>
   );
-}
+});
 
 const NavbarList = forwardRef<HTMLButtonElement>(({}, ref) => {
   const navList = [

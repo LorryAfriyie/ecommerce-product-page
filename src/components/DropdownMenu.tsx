@@ -57,7 +57,15 @@ const CartContentGrid = () => {
           </button>
         </div>
       </div>
-      <button className="checkout">Checkout</button>
+      <button
+        className="checkout"
+        onClick={() => {
+          alert("Your order has been placed!");
+          deleteFromCart();
+        }}
+      >
+        Checkout
+      </button>
     </div>
   );
 };
