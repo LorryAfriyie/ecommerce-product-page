@@ -27,11 +27,11 @@ export function ImageSlider({ images, thumbnails }: ImageSlider) {
 
   return (
     <div className={"overlay"}>
-      <button onClick={handleSlider} className={"close-btn"}>
-        <CloseIcon />
-      </button>
-      <div className="img-slider-grid">
-        <div className="img-slider-grid__img-container">
+      <div className={"img-slider-grid"}>
+        <button onClick={handleSlider} className={"close-btn"}>
+          <CloseIcon />
+        </button>
+        <div className={"img-slider-grid__img-container"}>
           <img
             src={images[index]}
             alt="slider image"

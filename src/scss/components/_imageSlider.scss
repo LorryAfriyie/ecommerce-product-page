@@ -1,6 +1,6 @@
 .img-slider-grid {
   display: grid;
-  place-items: center;
+  place-content: center;
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -22,6 +22,7 @@
     display: grid;
     gap: 1.5rem;
     place-content: center;
+    justify-self: center;
     grid-template-columns: repeat(4, 1fr);
     margin-block-start: 2rem;
     width: 100%;
@@ -75,9 +76,7 @@
     border: 2px solid var(--clr-orange);
     border-radius: 15px;
   }
-}
 
-.overlay {
   .close-btn {
     all: unset;
     margin-block-end: 1rem;
