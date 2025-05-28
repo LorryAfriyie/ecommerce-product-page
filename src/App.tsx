@@ -10,8 +10,8 @@ function App() {
     <div className="app">
       <CartProvider>
         <Navbar ref={overlay} />
-
         <Hero />
+        {/* <Modal />*/}
         <div className="another-overlay" ref={overlay}></div>
         <div className="attribution">
           Challenge by{" "}

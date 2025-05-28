@@ -5,7 +5,7 @@ interface CartProps {
   quantity: () => number;
 }
 
-export const Cart = ({ openDropdown, quantity }: CartProps) => {
+const Cart = ({ openDropdown, quantity }: CartProps) => {
   return (
     <div className={"profile-container__cart"} onClick={openDropdown}>
       {quantity() > 0 && <span className={"quantity-badge"}>{quantity()}</span>}
@@ -16,3 +16,5 @@ export const Cart = ({ openDropdown, quantity }: CartProps) => {
     </div>
   );
 };
+
+export default Cart;

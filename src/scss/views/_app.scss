@@ -1,4 +1,6 @@
 .app {
+  position: relative;
+
   .attribution {
     font-size: 11px;
     text-align: center;
@@ -8,32 +10,6 @@
     }
   }
 }
-
-// Hamburger menu icon
-.menu-icon {
-  background: none;
-  border: none;
-  padding: 0;
-
-  @media (min-width: 35em) {
-    display: none;
-  }
-  /*  display: none;
-    cursor: pointer;
-    background: url("/images/icon-menu.svg") no-repeat;
-    margin-inline-start: auto;
-    border-radius: 0;
-
-    @media (max-width: 40em) {
-      display: block;
-      margin-inline-end: 1rem;
-      z-index: 3;
-    }*/
-}
-
-/*.menu-icon[aria-expanded="true"] {
-  background: url("/images/icon-close.svg") no-repeat;
-}*/
 
 .border-container {
   display: grid;

@@ -3,14 +3,16 @@ import { CloseIcon, HamburgerIcon } from "./SVG.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import avatar from "/images/image-avatar.png";
 import { DropdownMenu } from "./DropdownMenu.tsx";
-import { Cart } from "./Cart.tsx";
+import Cart from "./Cart.tsx";
 
 export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
   const { product } = useCart();
+
+  const { prodQuantity } = product;
+
   const primaryNav = useRef<HTMLDivElement>(null),
     navToggle = useRef<HTMLButtonElement>(null),
-    closeNav = useRef<HTMLButtonElement>(null),
-    dropdown = useRef<HTMLDivElement>(null);
+    closeNav = useRef<HTMLButtonElement>(null);
 
   const [open, setOpen] = useState<boolean>(false);
 
@@ -20,7 +22,7 @@ export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
   }
 
   function quantity() {
-    return product.prodQuantity;
+    return prodQuantity;
   }
 
   useEffect(() => {
@@ -58,7 +60,9 @@ export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
         >
           <HamburgerIcon />
         </button>
+
         <div className={"brand"}>sneakers</div>
+
         <div className={"nav-menu"} data-visible={"false"} ref={primaryNav}>
           <NavbarList ref={closeNav} />
         </div>
@@ -67,7 +71,9 @@ export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
           <div className={"profile-container__dropdown"}>
             <Cart openDropdown={openDropdown} quantity={quantity} />
 
-            {open && <DropdownMenu ref={dropdown} open={open} />}
+            {open && (
+              <DropdownMenu ref={ref} open={open} toggleCart={openDropdown} />
+            )}
           </div>
 
           <div className={"profile"}>
