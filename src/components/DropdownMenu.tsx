@@ -14,12 +14,12 @@ interface CartContentGrid {
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   (props, ref) => {
-    const { product, deleteFromCart } = useCart();
+    const { product, deleteFromCart, setOpenModal } = useCart();
     const { prodQuantity } = product;
     const { open, toggleCart } = props;
 
     function showModal() {
-      if (ref) ref.current.style.display = "block";
+      setOpenModal((current) => !current);
       deleteFromCart();
       toggleCart();
     }
@@ -29,6 +29,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
         <div className={"cart-header"}>
           <p>Cart</p>
         </div>
+
         <div className={"cart-content"}>
           {prodQuantity === 0 ? (
             <EmptyCart />

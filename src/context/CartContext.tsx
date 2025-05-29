@@ -18,6 +18,8 @@ type CartContext = {
   handleSlider: () => void;
   index: number;
   setIndex: Dispatch<SetStateAction<number>>;
+  openModal: boolean;
+  setOpenModal: Dispatch<SetStateAction<boolean>>;
 
   product: {
     prodName: string;
@@ -50,6 +52,7 @@ export function CartProvider({ children }: CartContextType) {
   const [cartQuantity, setCartQuantity] = useState<number>(0);
   const [slider, setSlider] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const PRICE = 125;
 
   const [product, setProduct] = useState<ProductDetails>({
@@ -117,6 +120,8 @@ export function CartProvider({ children }: CartContextType) {
         product,
         addToCart,
         deleteFromCart,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}

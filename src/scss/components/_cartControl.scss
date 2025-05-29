@@ -7,6 +7,7 @@
   @media (max-width: 60em) {
     grid-template-columns: repeat(2, 1fr);
     flex-direction: column;
+    margin-block-end: 1rem;
   }
   /*  @media (min-width: 60em) {
       grid-template-columns: 35% 1fr;
@@ -29,6 +30,7 @@
     justify-content: center;
     font-weight: 700;
     width: 100%;
+    box-shadow: 0 10px 40px 0 rgba(245, 144, 39, 0.33);
 
     svg {
       position: relative;
