@@ -29,7 +29,6 @@ export function QuantityBtn({
   icon,
   icon2,
   text,
-  btnClass,
   btnFunction,
   btnFunction2,
 }: QuantityType) {
