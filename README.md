@@ -56,7 +56,7 @@ Below are screenshots of the mobile version:
 ### Links
 
 - Solution URL: [Project Solution URL](https://github.com/LorryAfriyie/ecommerce-product-page)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live Site URL](https://lorryafriyie.github.io/ecommerce-product-page)
 
 ## My process
 

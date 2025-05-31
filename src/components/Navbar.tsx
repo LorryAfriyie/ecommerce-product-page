@@ -5,9 +5,13 @@ import avatar from "/images/image-avatar.png";
 import { DropdownMenu } from "./DropdownMenu.tsx";
 import Cart from "./Cart.tsx";
 
-export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
-  const { product } = useCart();
+interface NavbarProps {
+  show: () => void;
+  hide: () => void;
+}
 
+export const Navbar = ({ show, hide }: NavbarProps) => {
+  const { product } = useCart();
   const { prodQuantity } = product;
 
   const primaryNav = useRef<HTMLDivElement>(null),
@@ -32,8 +36,7 @@ export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
       if (visibility === "false") {
         primaryNav.current?.setAttribute("data-visible", "true");
         navToggle.current?.setAttribute("aria-expanded", "true");
-
-        if (ref) ref.current.style.display = "block";
+        show();
       }
     });
 
@@ -43,11 +46,10 @@ export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
       if (visibility === "true") {
         primaryNav.current?.setAttribute("data-visible", "false");
         navToggle.current?.setAttribute("aria-expanded", "false");
-
-        if (ref) ref.current.style.display = "none";
+        hide();
       }
     });
-  }, []);
+  }, [hide, show]);
 
   return (
     <header className={"primary-header"}>
@@ -71,9 +73,7 @@ export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
           <div className={"profile-container__dropdown"}>
             <Cart openDropdown={openDropdown} quantity={quantity} />
 
-            {open && (
-              <DropdownMenu ref={ref} open={open} toggleCart={openDropdown} />
-            )}
+            {open && <DropdownMenu open={open} toggleCart={openDropdown} />}
           </div>
 
           <div className={"profile"}>
@@ -83,7 +83,7 @@ export const Navbar = forwardRef<HTMLDivElement>(({}, ref) => {
       </div>
     </header>
   );
-});
+};
 
 const NavbarList = forwardRef<HTMLButtonElement>(({}, ref) => {
   const navList = [

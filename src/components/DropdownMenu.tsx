@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import { formatCurrency } from "../utilities/currencyFormat.ts";
 import { DeleteIcon } from "./SVG.tsx";
 import { useCart } from "../context/CartContext.tsx";
@@ -12,35 +11,32 @@ interface CartContentGrid {
   show: () => void;
 }
 
-export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
-  (props, ref) => {
-    const { product, deleteFromCart, setOpenModal } = useCart();
-    const { prodQuantity } = product;
-    const { open, toggleCart } = props;
+export const DropdownMenu = ({ open, toggleCart }: DropdownMenuProps) => {
+  const { product, deleteFromCart, setOpenModal } = useCart();
+  const { prodQuantity } = product;
 
-    function showModal() {
-      setOpenModal((current) => !current);
-      deleteFromCart();
-      toggleCart();
-    }
+  function showModal() {
+    setOpenModal((current) => !current);
+    deleteFromCart();
+    toggleCart();
+  }
 
-    return (
-      <div className={`profile-container__dropdown-menu ${open && "open"}`}>
-        <div className={"cart-header"}>
-          <p>Cart</p>
-        </div>
-
-        <div className={"cart-content"}>
-          {prodQuantity === 0 ? (
-            <EmptyCart />
-          ) : (
-            <CartContentGrid show={showModal} />
-          )}
-        </div>
+  return (
+    <div className={`profile-container__dropdown-menu ${open && "open"}`}>
+      <div className={"cart-header"}>
+        <p>Cart</p>
       </div>
-    );
-  },
-);
+
+      <div className={"cart-content"}>
+        {prodQuantity === 0 ? (
+          <EmptyCart />
+        ) : (
+          <CartContentGrid show={showModal} />
+        )}
+      </div>
+    </div>
+  );
+};
 
 const EmptyCart = () => {
   return (

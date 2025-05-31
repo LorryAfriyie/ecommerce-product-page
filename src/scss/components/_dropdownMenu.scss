@@ -14,13 +14,9 @@
     background-color: var(--clr-white);
     border-radius: 0.5rem;
     box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.1);
-
-    @media (max-width: 30em) {
-      z-index: 1;
-    }
-
     opacity: 0;
     pointer-events: none;
+
     transition:
       opacity 150ms ease-in-out,
       transform 150ms ease-in-out;
@@ -102,6 +98,10 @@
           }
         }
       }
+    }
+
+    @media (max-width: 30em) {
+      z-index: 1;
     }
   }
 

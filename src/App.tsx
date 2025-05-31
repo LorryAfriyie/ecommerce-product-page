@@ -7,10 +7,22 @@ import Modal from "./components/Modal.tsx";
 function App() {
   const overlay = useRef<HTMLDivElement>(null);
 
+  const show = () => {
+    if (overlay.current) {
+      overlay.current.style.display = "block";
+    }
+  };
+
+  const hide = () => {
+    if (overlay.current) {
+      overlay.current.style.display = "none";
+    }
+  };
+
   return (
     <div className="app">
       <CartProvider>
-        <Navbar ref={overlay} />
+        <Navbar show={show} hide={hide} />
         <Hero />
 
         <Modal>
